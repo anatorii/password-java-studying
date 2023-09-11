@@ -52,6 +52,9 @@ public class Password extends JFrame {
         label.setAlignmentX(Component.LEFT_ALIGNMENT);
         pass.setAlignmentX(Component.LEFT_ALIGNMENT);
         String[] options = {"OK", "Отмена"};
+
+        String password1 = "";
+        String password2 = "";
         StringBuilder password;
 
         boolean isValidPassword = false;
@@ -66,7 +69,22 @@ public class Password extends JFrame {
             for (char c : pass.getPassword()) {
                 password.append(c);
             }
+            password1 = password.toString();
             isValidPassword = validatePassword(password.toString());
+        }
+
+        while (!password2.equals(password1)) {
+            pass.setText("");
+            int option = JOptionPane.showOptionDialog(null, panel, "Повтор ввода пароля",
+                    JOptionPane.NO_OPTION, JOptionPane.PLAIN_MESSAGE, null, options, options[0]);
+            if (option != 0) {
+                return;
+            }
+            password = new StringBuilder();
+            for (char c : pass.getPassword()) {
+                password.append(c);
+            }
+            password2 = password.toString();
         }
 
         JOptionPane.showMessageDialog(null,  "Вы успешно прошли регистрацию!",
