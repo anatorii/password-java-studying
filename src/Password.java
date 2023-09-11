@@ -7,7 +7,7 @@ public class Password extends JFrame {
     static int height = 600;
 
     public Password() {
-        super("Resolution");
+        super("Password");
     }
 
     private void initGui() {
